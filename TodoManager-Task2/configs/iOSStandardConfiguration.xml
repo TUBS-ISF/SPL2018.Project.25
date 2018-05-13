@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+    <feature automatic="selected" name="TodoManager"/>
+    <feature automatic="selected" name="Platform"/>
+    <feature manual="selected" name="iOS"/>
+    <feature automatic="unselected" name="PC"/>
+    <feature automatic="unselected" name="Android"/>
+    <feature automatic="unselected" name="Mac"/>
+    <feature automatic="selected" name="Task"/>
+    <feature automatic="selected" name="Title"/>
+    <feature automatic="selected" name="Notes"/>
+    <feature manual="selected" name="Checklist"/>
+    <feature manual="selected" name="Categorize"/>
+    <feature manual="selected" name="Share"/>
+    <feature automatic="selected" name="Archive"/>
+    <feature automatic="selected" name="Notification"/>
+    <feature automatic="selected" name="Alarm"/>
+</configuration>
