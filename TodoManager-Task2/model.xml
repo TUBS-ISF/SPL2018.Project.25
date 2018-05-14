@@ -42,12 +42,12 @@ Mac Geräten läuft.
 Eine Task ist eine Aufgabe die vom User festlegbar ist. Es dient dazu
 alltägliche Aufgaben überschaubar zu verwalten.
 </description>
-                <feature abstract="true" mandatory="true" name="Title">
+                <feature mandatory="true" name="Title">
                     <description>
 Eine Task besteht aus einem Title aus dem die Aufgabe ersichtlich ist.
 </description>
                 </feature>
-                <feature abstract="true" mandatory="true" name="Notes">
+                <feature mandatory="true" name="Notes">
                     <description>
 Notizen sind dafür da um zusätzliche Informationen in den Task
 zu schreiben.
@@ -58,12 +58,12 @@ zu schreiben.
 Checklist ermöglicht es eine Task in Sub-Tasks aufzuteilen.
 </description>
                 </feature>
-                <feature abstract="true" name="Severity">
+                <feature name="Severity">
                     <description>
 Severity gibt die Priorität der Aufgabe an.
 </description>
                 </feature>
-                <feature abstract="true" mandatory="true" name="Categorize">
+                <feature mandatory="true" name="Categorize">
                     <description>
 Das Feature „Categorize“ ermöglicht es die Tasks in verschiedenen
 Kategorien zu verwalten.
@@ -114,7 +114,7 @@ am Task stattgefunden haben.
                         </and>
                     </and>
                 </and>
-                <feature abstract="true" name="Deadline">
+                <feature name="Deadline">
                     <description>
 Das Feature Deadline setzt eine Frist bis zu der eine Aufgabe
 erledigt werden sollte.
