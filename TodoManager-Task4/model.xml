@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+    <properties/>
+    <struct>
+        <and abstract="true" mandatory="true" name="TodoManager">
+            <description>
+Der TodoManager verwaltet Aufgaben (Tasks).
+</description>
+            <alt abstract="true" mandatory="true" name="Platform">
+                <description>
+Dieses Feature legt fest welche Plattformen unterstützt werden.
+Die Abhängigkeit zu den Sub-Features ist Alternativ, sprich nur
+eine Plattform kann gewählt werden.
+</description>
+                <feature name="iOS">
+                    <description>
+Der Feature „iOS“ legt fest, dass der TodoManager auf
+iOS fähigen Geräten läuft.
+</description>
+                </feature>
+                <feature name="PC">
+                    <description>
+Der Feature „PC“ legt fest, dass der TodoManager auf
+PCs läuft.
+</description>
+                </feature>
+                <feature name="Android">
+                    <description>
+Der Feature „Android“ legt fest, dass der TodoManager auf
+Android fähigen Geräten läuft.
+</description>
+                </feature>
+                <feature name="Mac">
+                    <description>
+Der Feature „Mac“ legt fest, dass der TodoManager auf
+Mac Geräten läuft.
+</description>
+                </feature>
+            </alt>
+            <and abstract="true" mandatory="true" name="Task">
+                <description>
+Eine Task ist eine Aufgabe die vom User festlegbar ist. Es dient dazu
+alltägliche Aufgaben überschaubar zu verwalten.
+</description>
+                <feature mandatory="true" name="Title">
+                    <description>
+Eine Task besteht aus einem Title aus dem die Aufgabe ersichtlich ist.
+</description>
+                </feature>
+                <feature mandatory="true" name="Notes">
+                    <description>
+Notizen sind dafür da um zusätzliche Informationen in den Task
+zu schreiben.
+</description>
+                </feature>
+                <feature name="Checklist">
+                    <description>
+Checklist ermöglicht es eine Task in Sub-Tasks aufzuteilen.
+</description>
+                </feature>
+                <feature name="Severity">
+                    <description>
+Severity gibt die Priorität der Aufgabe an.
+</description>
+                </feature>
+                <feature mandatory="true" name="Categorize">
+                    <description>
+Das Feature „Categorize“ ermöglicht es die Tasks in verschiedenen
+Kategorien zu verwalten.
+</description>
+                </feature>
+                <feature name="Share">
+                    <description>
+Das Share Feature ermöglicht es eine Aufgabe z.B. Einkaufsliste per
+E-Mail zu teilen.
+</description>
+                </feature>
+                <and abstract="true" name="GroupTask">
+                    <description>
+Das GroupTask Feature ermöglicht es Aufgaben zu erstellen die
+mehrere Personen sehen und verwalten können.
+GroupTask impliziert UserManagement und CloudSynchronization.
+</description>
+                    <and abstract="true" mandatory="true" name="AssignToPerson">
+                        <description>
+AssignToPerson ermöglicht es dem Administrator der Gruppe eine
+Task einem Mitglied dieser Gruppe zuzuteilen.
+</description>
+                        <and abstract="true" mandatory="true" name="GroupNotification">
+                            <description>
+Das Feature GroupNotification ermöglicht es Personen in der
+Gruppe zu benachrichtigen.
+</description>
+                            <feature abstract="true" mandatory="true" name="TaskAssigned">
+                                <description>
+Das Feature TaskAssigned ermöglicht die Benachrichtigung
+einer Person die zu einem Task zugeteilt wurde.
+</description>
+                            </feature>
+                            <feature abstract="true" mandatory="true" name="TaskCompleted">
+                                <description>
+Das Feature TaskCompleted ermöglicht die Benachrichtigung
+des GruppenAdministrators durch die Person die einer Task
+zugewiesen wurde, wenn der Task abgeschlossen wurde.
+</description>
+                            </feature>
+                            <feature abstract="true" mandatory="true" name="TaskChanged">
+                                <description>
+Das Feature TaskChanged ermöglicht die Benachrichtigung
+aller an einer Task beteiligten Personen wenn Änderungen
+am Task stattgefunden haben.
+</description>
+                            </feature>
+                        </and>
+                    </and>
+                </and>
+                <feature name="Deadline">
+                    <description>
+Das Feature Deadline setzt eine Frist bis zu der eine Aufgabe
+erledigt werden sollte.
+Deadline wird durch GroupTask impliziert.
+</description>
+                </feature>
+                <feature name="Progress">
+                    <description>
+Das Feature Progress zeigt den Fortschritt einer Aufgabe an.
+Progress wird durch GroupTask impliziert.
+</description>
+                </feature>
+                <feature abstract="true" mandatory="true" name="Archive">
+                    <description>
+Das Feature Archive ermöglicht das Löschen und Archivieren von
+Aufgaben.
+</description>
+                </feature>
+                <feature abstract="true" name="CloudSynchronization">
+                    <description>
+Das Feature CloudSynchronization ermöglicht das Speichern
+und Synchronisieren von Aufgaben auf einem Server.
+CloudSynchronization wird durch das Feature GroupTask impliziert.
+</description>
+                </feature>
+                <feature name="Comment">
+                    <description>
+Das Feature Comment ermöglicht es Kommentare in Aufgaben zu
+schreiben.
+Comment wird durch das Feature GroupTask impliziert.
+</description>
+                </feature>
+                <feature abstract="true" name="AttachFiles">
+                    <description>
+Das Feature AtachFiles ermöglicht es mehrere Dateien in eine
+Aufgabe anzuhängen.
+AttachFiles wird durch GroupTask impliziert.
+</description>
+                </feature>
+                <feature abstract="true" name="UserManagement">
+                    <description>
+Das Feature UserManagement ermöglicht eine Benutzerverwaltung.
+UserManagement wird durch GroupTask impliziert.
+UserManagement impliziert GroupTask.
+</description>
+                </feature>
+            </and>
+            <and abstract="true" mandatory="true" name="Notification">
+                <description>
+Das Feature Notification ermöglicht die Benachrichtigung des
+Nutzers.
+</description>
+                <feature abstract="true" mandatory="true" name="Alarm">
+                    <description>
+Das Feature Alarm ermöglicht es einen Wecker zu einer Aufgabe
+zu erstellen.
+</description>
+                </feature>
+                <feature abstract="true" name="Mail">
+                    <description>
+Das Feature Mail ermöglicht die Benachrichtigung des Nutzers
+auf eine Aufgabe via E-Mail.
+</description>
+                </feature>
+                <feature abstract="true" name="Location">
+                    <description>
+Das Feature Location ermöglicht die Benachrichtigung des Nutzers
+abhängig seines Aufenthaltsortes.
+</description>
+                </feature>
+            </and>
+        </and>
+    </struct>
+    <constraints>
+        <rule>
+            <eq>
+                <var>GroupTask</var>
+                <var>UserManagement</var>
+            </eq>
+        </rule>
+        <rule>
+            <imp>
+                <var>GroupTask</var>
+                <var>CloudSynchronization</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>GroupTask</var>
+                <var>Comment</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>GroupTask</var>
+                <var>Deadline</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>GroupTask</var>
+                <var>Severity</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>GroupTask</var>
+                <var>Progress</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>GroupTask</var>
+                <var>AttachFiles</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>GroupTask</var>
+                <var>Checklist</var>
+            </imp>
+        </rule>
+    </constraints>
+    <calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+    <comments/>
+    <featureOrder userDefined="false"/>
+</featureModel>

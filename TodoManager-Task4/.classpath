@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/Android.jar"/>
+	<classpathentry kind="lib" path="lib/Categorize.jar"/>
+	<classpathentry kind="lib" path="lib/Checklist.jar"/>
+	<classpathentry kind="lib" path="lib/Comment.jar"/>
+	<classpathentry kind="lib" path="lib/Notes.jar"/>
+	<classpathentry kind="lib" path="lib/Progress.jar"/>
+	<classpathentry kind="lib" path="lib/Share.jar"/>
+	<classpathentry kind="lib" path="lib/Title.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
