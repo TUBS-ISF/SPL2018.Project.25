@@ -1,9 +1,9 @@
-package base;
+import base.TodoManager;
 
-public aspect iOS {
+public aspect Mac{
 	String platform;
 
 	after(TodoManager tm): execution(TodoManager.new()) && this(tm){
-		tm.setPlatform("iOS");
+		tm.setPlatform("Mac");
 	}
 }

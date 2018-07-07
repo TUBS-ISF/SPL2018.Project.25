@@ -7,8 +7,8 @@
     <feature manual="selected" name="Android"/>
     <feature automatic="unselected" name="Mac"/>
     <feature automatic="selected" name="Task"/>
-    <feature automatic="selected" name="Title"/>
-    <feature automatic="selected" name="Notes"/>
+    <feature manual="selected" name="Title"/>
+    <feature manual="selected" name="Notes"/>
     <feature manual="selected" name="Checklist"/>
     <feature manual="selected" name="Severity"/>
     <feature automatic="selected" manual="selected" name="Categorize"/>

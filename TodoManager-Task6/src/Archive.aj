@@ -1,8 +1,12 @@
 import java.util.ArrayList;
 
+import base.Task;
+import base.TodoManager;
+import base.TodoManagerMain;
+
 public aspect Archive {
-	
-	declare precedence: Title, Notes; 
+	declare precedence : Title, Notes, Categorize;
+
 	
 	private ArrayList<Task> TodoManager.archive = new ArrayList<Task>();
 	
@@ -10,55 +14,59 @@ public aspect Archive {
 		return archive;
 	}
 	
-	static void TodoManagerMain.listAllArchivedTasks() {
-		System.out.println(tm.getHeaderDescription());
-		if (tm.getArchivedTasks().isEmpty()) {
-			System.out.println("No Tasks archived!");
-			return;
-		}
-		for(int i = 0; i<tm.getArchivedTasks().size();i++) {
-			Task task = tm.getArchivedTasks().get(i);
-			System.out.println(i + ". " + task.toString());
-		}
-	}
-	
-	static void TodoManagerMain.listAllTasksDelete() {
-		System.out.println(tm.getHeaderDescription());
-		if (tm.getTaskList().isEmpty()) {
-			System.out.println("No Tasks saved!");
-			return;
-		}
-		for(int i = 0; i<tm.getTaskList().size();i++) {
-			Task task = tm.getTaskList().get(i);
-			System.out.println(i + ". " + task.toString());
-		}
-		System.out.println("Enter Task ID to delete or enter 'm' to go back to Menu.");
-		sc.nextLine();
-		String input = sc.nextLine();
-		if (input.charAt(0) == 'm') {
-			return;
-		}
-		else {
-			int id = Integer.parseInt(input);
-			Task task = tm.getTaskList().get(id);
-			if (tm.removeTask(task)) {
-				System.out.println(task.getTitle() + " was archived!");
-			}
-		}
-	}
-	
 	public boolean TodoManager.removeTask(Task task) {
-		if (taskList.remove(task))
+		if (this.getTaskList().remove(task))
 			archive.add(task);
 		else
 			return false;
 		return true;
 	}
 	
-	before(TodoManager tm): execution(* TodoManagerMain.printMenu()) && this(tm){
-		TodoManagerMain.methodMap.put(TodoManagerMain.menuCounter, () -> TodoManagerMain.listAllArchivedTasks());
-		System.out.println(TodoManagerMain.menuCounter++ + ". Show Archived Tasks.");
-		TodoManagerMain.methodMap.put(TodoManagerMain.menuCounter, () -> TodoManagerMain.listAllTasksDelete());
-		System.out.println(TodoManagerMain.menuCounter++ + ". Remove Task.");
+	private static void TodoManagerMain.listAllArchivedTasks() {
+		System.out.println(TodoManagerMain.getTodoManager().getHeaderDescription());
+		if (TodoManagerMain.getTodoManager().getArchivedTasks().isEmpty()) {
+			System.out.println("No Tasks archived!");
+			return;
+		}
+		for(int i = 0; i<TodoManagerMain.getTodoManager().getArchivedTasks().size();i++) {
+			Task task = TodoManagerMain.getTodoManager().getArchivedTasks().get(i);
+			System.out.println(i + ". " + task.toString());
+		}
+	}
+	
+	private static void TodoManagerMain.listAllTasksDelete() {
+		System.out.println(TodoManagerMain.getTodoManager().getHeaderDescription());
+		if (TodoManagerMain.getTodoManager().getTaskList().isEmpty()) {
+			System.out.println("No Tasks saved!");
+			return;
+		}
+		for(int i = 0; i<TodoManagerMain.getTodoManager().getTaskList().size();i++) {
+			Task task = TodoManagerMain.getTodoManager().getTaskList().get(i);
+			System.out.println(i + ". " + task.toString());
+		}
+		System.out.println("Enter Task ID to delete or enter 'm' to go back to Menu.");
+		TodoManagerMain.getScanner().nextLine();
+		String input = TodoManagerMain.getScanner().nextLine();
+		if (input.charAt(0) == 'm') {
+			return;
+		}
+		else {
+			int id = Integer.parseInt(input);
+			Task task = TodoManagerMain.getTodoManager().getTaskList().get(id);
+			if (TodoManagerMain.getTodoManager().removeTask(task)) {
+				System.out.println(task.getTitle() + " was archived!");
+			}
+		}
+	}
+	
+	void around(): execution(void TodoManagerMain.printMenu()){
+		proceed();
+		TodoManagerMain.methodMap.put(TodoManagerMain.getMenuCounter(), () -> TodoManagerMain.listAllArchivedTasks());
+		System.out.println(TodoManagerMain.getMenuCounter() + ". Show Archived Tasks.");
+		TodoManagerMain.incrementCounter();
+		
+		TodoManagerMain.methodMap.put(TodoManagerMain.getMenuCounter(), () -> TodoManagerMain.listAllTasksDelete());
+		System.out.println(TodoManagerMain.getMenuCounter() + ". Remove Task.");
+		TodoManagerMain.incrementCounter();
 	}
 }

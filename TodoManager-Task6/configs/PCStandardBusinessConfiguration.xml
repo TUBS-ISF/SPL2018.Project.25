@@ -9,7 +9,9 @@
     <feature automatic="selected" name="Task"/>
     <feature automatic="selected" name="Title"/>
     <feature automatic="selected" name="Notes"/>
+    <feature automatic="selected" name="Checklist"/>
     <feature automatic="selected" name="Severity"/>
+    <feature automatic="selected" name="Categorize"/>
     <feature manual="selected" name="GroupTask"/>
     <feature automatic="selected" name="AssignToPerson"/>
     <feature automatic="selected" name="GroupNotification"/>

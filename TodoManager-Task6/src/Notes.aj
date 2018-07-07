@@ -1,7 +1,10 @@
+import base.Task;
+import base.TodoManager;
+import base.TodoManagerMain;
+
 public aspect Notes {
-
-	declare precedence: Title; 
-
+	
+	declare precedence : Title; 
 	private String Task.notes;
 	
 	public String Task.getNotes() {
@@ -12,16 +15,16 @@ public aspect Notes {
 		this.notes = notes;
 	}
 	
-	after(Task task): execution(* TodoManagerMain.updateTask(Task)) && args(task){
-		System.out.print("Enter Notes/Description: ");
-		TodoManagerMain.sc.nextLine();
-		String notes = TodoManagerMain.sc.nextLine();
+	before(Task task): execution(* TodoManagerMain.updateTask(Task)) && args(task){
+		System.out.print("Enter Notes/Description (String): ");
+//		TodoManagerMain.getScanner().nextLine();
+		String notes = TodoManagerMain.getScanner().nextLine();
 		task.setNotes(notes);
 	}
 	
 	String around(Task task): execution(String Task.toString()) && this(task){
 		String result = proceed(task);
-		return result + "\t" + task.getNotes();
+		return result + "\t\t" + task.getNotes();
 	}
 	
 	String around(): execution(String TodoManager.getHeaderDescription()){
