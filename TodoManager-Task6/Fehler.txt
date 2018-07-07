@@ -1,0 +1,7 @@
+Durch das einweaven des Codes werden die Einrückungen bei der Anzeige im Terminal verrutscht.
+Siehe: MacStandardBusinessConfiguration, eine Task erstellen mit allen Werten ausgefüllt und dann alle Tasks anzeigen lassen.
+
+Der AspectJ Composer wird nicht mitinstalliert wenn man FeatureIDE über den Marketplace installiert. Ein entsprechender Hinweis, dass die Composer mitinstalliert werden müssen wäre hilfreich.
+Die auf der FeatureIDE Webseite angebotene "fertig" IDE (Eclipse + FeatureIDE vorkonfiguriert) startet unter MacOS High Sierra (10.13.4) nicht mit folgender Fehlermeldung:
+
+"Eclipse ist beschädigt und kann nicht geöffnet werden." Eventuell wurde die App Signatur nicht angepasst (aussage der Mac Hilfe).
